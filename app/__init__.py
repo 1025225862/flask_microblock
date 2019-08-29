@@ -1,12 +1,12 @@
 import logging
 from flask import Flask
-from app.config import Config#从config模块导入Config类
+from config import Config#从config模块导入Config类
 from flask_sqlalchemy import SQLAlchemy#从包中导入类
 from flask_migrate import Migrate
 from flask_login import LoginManager
 from logging.handlers import RotatingFileHandler
 from flask_mail import Mail
-
+from flask_bootstrap import Bootstrap
 import os
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -15,6 +15,7 @@ migrate = Migrate(app, db)#迁移引擎对象
 login = LoginManager(app)
 login.login_view='login'
 mail = Mail(app)
+bootstrap = Bootstrap(app)
 if not app.debug:
     if not os.path.exists('logs'):
         os.mkdir('logs')
