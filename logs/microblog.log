@@ -1,4 +1,11 @@
-2019-08-29 14:37:58,066 ERROR: Exception on /register [GET] [in C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py:1780]
+2019-08-30 12:16:25,343 ERROR: Exception on /dele/我是张三/zhangsan [GET] [in C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py:1780]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\orm\session.py", line 1979, in delete
+    state = attributes.instance_state(instance)
+AttributeError: 'str' object has no attribute '_sa_instance_state'
+
+During handling of the above exception, another exception occurred:
+
 Traceback (most recent call last):
   File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 2311, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,37 +19,45 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1818, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Administrator\PycharmProjects\boke\app\routes.py", line 66, in register
-    return render_template('register.html', title='Register', form=form)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\templating.py", line 135, in render_template
-    context, ctx.app)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\templating.py", line 117, in _render
-    rv = template.render(context)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
-    return original_render(self, *args, **kwargs)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\jinja2\environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\boke\app\routes.py", line 171, in dele
+    db.session.delete(body)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\orm\scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\orm\session.py", line 1981, in delete
+    raise exc.UnmappedInstanceError(instance)
+sqlalchemy.orm.exc.UnmappedInstanceError: Class 'builtins.str' is not mapped
+2019-08-30 12:20:27,483 INFO: Microblog startup [in C:\Users\Administrator\PycharmProjects\boke\app\__init__.py:35]
+2019-08-30 12:20:35,543 ERROR: Exception on /dele/我是张三/zhangsan [GET] [in C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py:1780]
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\orm\session.py", line 1979, in delete
+    state = attributes.instance_state(instance)
+AttributeError: 'list' object has no attribute '_sa_instance_state'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 2311, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1834, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1737, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\jinja2\_compat.py", line 37, in reraise
-    raise value.with_traceback(tb)
-  File "C:\Users\Administrator\PycharmProjects\boke\app\templates\register.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "C:\Users\Administrator\PycharmProjects\boke\app\templates\base.html", line 1, in top-level template code
-    {% extends "bootstrap/base.html" %}
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
-    {%- block html %}
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
-    {% block body -%}
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
-    {% block content -%}
-  File "C:\Users\Administrator\PycharmProjects\boke\app\templates\base.html", line 54, in block "content"
-    {% block app_content %}{% endblock %}
-  File "C:\Users\Administrator\PycharmProjects\boke\app\templates\register.html", line 39, in block "app_content"
-    {{ wtf.quick_form(form) }}
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\jinja2\environment.py", line 430, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'wtf' is undefined
-2019-08-29 14:38:10,013 INFO: Microblog startup [in C:\Users\Administrator\PycharmProjects\boke\app\__init__.py:30]
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\_compat.py", line 36, in reraise
+    raise value
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1832, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1818, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\boke\app\routes.py", line 172, in dele
+    db.session.delete(post)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\orm\scoping.py", line 162, in do
+    return getattr(self.registry(), name)(*args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\orm\session.py", line 1981, in delete
+    raise exc.UnmappedInstanceError(instance)
+sqlalchemy.orm.exc.UnmappedInstanceError: Class 'builtins.list' is not mapped
+2019-08-30 12:21:31,891 INFO: Microblog startup [in C:\Users\Administrator\PycharmProjects\boke\app\__init__.py:35]
+2019-08-30 14:01:16,523 INFO: Microblog startup [in C:\Users\Administrator\PycharmProjects\boke\app\__init__.py:35]

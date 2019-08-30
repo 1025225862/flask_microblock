@@ -1,4 +1,4 @@
-2019-08-29 12:41:54,656 ERROR: Exception on /reset_password_request [POST] [in C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py:1780]
+2019-08-30 11:53:48,661 ERROR: Exception on /user/zhangsan [GET] [in C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py:1780]
 Traceback (most recent call last):
   File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 2311, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,88 +12,48 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1818, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Administrator\PycharmProjects\boke\app\routes.py", line 76, in reset_password_request
-    send_password_reset_email(user)
-  File "C:\Users\Administrator\PycharmProjects\boke\app\email.py", line 22, in send_password_reset_email
-    user=user, token=token))
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\templating.py", line 134, in render_template
-    return _render(ctx.app.jinja_env.get_or_select_template(template_name_or_list),
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\jinja2\environment.py", line 869, in get_or_select_template
-    return self.get_template(template_name_or_list, parent, globals)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\jinja2\environment.py", line 830, in get_template
-    return self._load_template(name, self.make_globals(globals))
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\jinja2\environment.py", line 804, in _load_template
-    template = self.loader.load(self, name, globals)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\jinja2\loaders.py", line 113, in load
-    source, filename, uptodate = self.get_source(environment, name)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\templating.py", line 58, in get_source
-    return self._get_source_fast(environment, template)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\templating.py", line 86, in _get_source_fast
-    raise TemplateNotFound(template)
-jinja2.exceptions.TemplateNotFound: email/reset_password.txt.html
-2019-08-29 12:42:06,315 INFO: Microblog startup [in C:\Users\Administrator\PycharmProjects\boke\app\__init__.py:29]
-2019-08-29 12:48:25,279 INFO: Microblog startup [in C:\Users\Administrator\PycharmProjects\boke\app\__init__.py:29]
-2019-08-29 12:49:25,791 INFO: Microblog startup [in C:\Users\Administrator\PycharmProjects\boke\app\__init__.py:29]
-2019-08-29 12:51:32,637 INFO: Microblog startup [in C:\Users\Administrator\PycharmProjects\boke\app\__init__.py:29]
-2019-08-29 12:55:09,944 INFO: Microblog startup [in C:\Users\Administrator\PycharmProjects\boke\app\__init__.py:29]
-2019-08-29 14:02:53,744 INFO: Microblog startup [in C:\Users\Administrator\PycharmProjects\boke\app\__init__.py:29]
-2019-08-29 14:04:17,152 INFO: Microblog startup [in C:\Users\Administrator\PycharmProjects\boke\app\__init__.py:29]
-2019-08-29 14:04:40,173 ERROR: Exception on /reset_password_request [POST] [in C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py:1780]
-Traceback (most recent call last):
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1244, in _execute_context
-    cursor, statement, parameters, context
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\default.py", line 552, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such table: user
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 2311, in wsgi_app
-    response = self.full_dispatch_request()
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1834, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1737, in handle_user_exception
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_login\utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "C:\Users\Administrator\PycharmProjects\boke\app\routes.py", line 106, in user
+    return render_template('user.html', user=user, posts=posts.items, next_url=next_url, prev_url=prev_url)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\templating.py", line 135, in render_template
+    context, ctx.app)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\templating.py", line 117, in _render
+    rv = template.render(context)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\jinja2\asyncsupport.py", line 76, in render
+    return original_render(self, *args, **kwargs)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\jinja2\environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\jinja2\environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\_compat.py", line 36, in reraise
-    raise value
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1832, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 1818, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "C:\Users\Administrator\PycharmProjects\boke\app\routes.py", line 74, in reset_password_request
-    user = User.query.filter_by(email=form.email.data).first()
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\orm\query.py", line 3232, in first
-    ret = list(self[0:1])
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\orm\query.py", line 3018, in __getitem__
-    return list(res)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\orm\query.py", line 3334, in __iter__
-    return self._execute_and_instances(context)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\orm\query.py", line 3359, in _execute_and_instances
-    result = conn.execute(querycontext.statement, self._params)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 988, in execute
-    return meth(self, multiparams, params)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\sql\elements.py", line 287, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1107, in _execute_clauseelement
-    distilled_params,
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1248, in _execute_context
-    e, statement, parameters, cursor, context
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1466, in _handle_dbapi_exception
-    util.raise_from_cause(sqlalchemy_exception, exc_info)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\util\compat.py", line 398, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\util\compat.py", line 152, in reraise
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\jinja2\_compat.py", line 37, in reraise
     raise value.with_traceback(tb)
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\base.py", line 1244, in _execute_context
-    cursor, statement, parameters, context
-  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\sqlalchemy\engine\default.py", line 552, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: user
-[SQL: SELECT user.id AS user_id, user.username AS user_username, user.email AS user_email, user.password_hash AS user_password_hash, user.about_me AS user_about_me, user.last_seen AS user_last_seen 
-FROM user 
-WHERE user.email = ?
- LIMIT ? OFFSET ?]
-[parameters: ('1025225862@qq.com', 1, 0)]
-(Background on this error at: http://sqlalche.me/e/e3q8)
-2019-08-29 14:07:46,192 INFO: Microblog startup [in C:\Users\Administrator\PycharmProjects\boke\app\__init__.py:29]
+  File "C:\Users\Administrator\PycharmProjects\boke\app\templates\user.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "C:\Users\Administrator\PycharmProjects\boke\app\templates\base.html", line 1, in top-level template code
+    {% extends "bootstrap/base.html" %}
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 4, in block "doc"
+    {%- block html %}
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 20, in block "html"
+    {% block body -%}
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask_bootstrap\templates\bootstrap\base.html", line 23, in block "body"
+    {% block content -%}
+  File "C:\Users\Administrator\PycharmProjects\boke\app\templates\base.html", line 57, in block "content"
+    {% block app_content %}{% endblock %}
+  File "C:\Users\Administrator\PycharmProjects\boke\app\templates\user.html", line 24, in block "app_content"
+    {% include '_post.html' %}
+  File "C:\Users\Administrator\PycharmProjects\boke\app\templates\_post.html", line 23, in top-level template code
+    <a href="{{ url_for('dele', username=post.author.username) }}">
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\helpers.py", line 356, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\app.py", line 2080, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\_compat.py", line 36, in reraise
+    raise value
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\flask\helpers.py", line 345, in url_for
+    force_external=external)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python37-32\lib\site-packages\werkzeug\routing.py", line 2007, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.BuildError: Could not build url for endpoint 'dele' with values ['username']. Did you forget to specify values ['post']?

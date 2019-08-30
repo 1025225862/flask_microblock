@@ -6,12 +6,25 @@
             </a>
         </td>
         <td>
-            <a href="{{ url_for('user', username=post.author.username) }}">
-                {{ post.author.username }}
-            </a>
-            says:
+            {% set user_link %}
+    <a href="{{ url_for('user', username=post.author.username) }}">
+        {{ post.author.username }}
+    </a>
+{% endset %}
+{{ _('%(username)s said %(when)s', username=user_link, when=moment(post.timestamp).fromNow()) }}
+            <!--<a href="{{ url_for('user', username=post.author.username) }}">-->
+                <!--{{ post.author.username }}-->
+            <!--</a>-->
+                <!--said {{ moment(post.timestamp).fromNow() }}:-->
             <br>
             {{ post.body }}
+            <br>
+            <br>
+             {% if user == current_user %}
+                <a href="{{ url_for('dele',body=post.body,username=post.author.username) }}">
+                    删除
+                </a>
+            {%endif%}
         </td>
     </tr>
 </table>
